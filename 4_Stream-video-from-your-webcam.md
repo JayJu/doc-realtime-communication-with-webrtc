@@ -58,3 +58,4 @@ navigator.getUserMedia(constraints, successCallback, errorCallback);
 
 ## 테스트하기
 브라우저에서 **index.html**를 열어 아래와같은 웹캠영상이 뜨는지 확인한다.
+![](/img/ch401.png)
