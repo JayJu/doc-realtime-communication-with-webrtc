@@ -4,7 +4,5 @@
 git에 익숙한 사용자라면 GitHub의 코드랩에서 클로닝으로 다운로드 할 수 있다.
 
 ```sh
-ls -ltr
-class {
-} 
+git clone https://github.com/googlecodelabs/webrtc-web
 ```
