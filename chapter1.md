@@ -10,4 +10,9 @@
 * 사진촬영 및 데이터 채널을 통해 공유하기
 
 ## 준비사항
+* 크롬 브라우져(47 이상)
+* [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb) 또는 별도의 웹서버
+* 샘플코드
+* HTML, CSS, Javascript 에 대한 기초지식
+
 
