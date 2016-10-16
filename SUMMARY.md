@@ -1,6 +1,7 @@
 # Summary
 
-* [1. Introduction](README.md)
-* [2. Overview](chapter1.md)
-* [3. Get the sample code](3get-the-sample-code.md)
+* [README](README.md)
+    * [I](i.md)
+* [2. Overview](2_Overview.md)
+* [3. Get the sample code](3_Get-the-sample-code.md)
 
