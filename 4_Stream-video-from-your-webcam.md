@@ -59,3 +59,7 @@ navigator.getUserMedia(constraints, successCallback, errorCallback);
 ## 테스트하기
 브라우저에서 **index.html**를 열어 아래와같은 웹캠영상이 뜨는지 확인한다.
 ![](/img/ch401.png)
+> gUM API의 더 나은 사용방법
+> 만약 위 코드가 옛날 스타일이라 생각했다면 맞다.
+> 우리는 현재 브라우저들의 호환성을 위해 `getUserMedia()`의 콜백 버전을 사용했다.
+> [MediaDevices API](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices)와 더 나은 에러핸들링을 이용한 Promise 버전은 [https://github.com/webrtc/samples](https://github.com/webrtc/samples) 데모에서 확인할 수 있다. 
