@@ -138,4 +138,18 @@ function successCallback(stream) {
 ## 팁
 
 * `video` 요소에 'autoplay\` 속성을 기억하라. 이 속성이 없으면 단일프레임만 보이게 된다. 
-* `getUserMedia()` 제약사항들에 대한 더 많은 옵션들이 있으니  [](/webrtc.github.io/samples/src/content/peerconnection/constraints "webrtc.github.io/samples/src/content/peerconnection/constraints")에서 확인하기 바란다. 
+* `getUserMedia()` 제약사항들에 대한 더 많은 옵션들이 있으니  [](http://webrtc.github.io/samples/src/content/peerconnection/constraints "http://webrtc.github.io/samples/src/content/peerconnection/constraints")에서 확인하기 바란다. 
+
+## Best practice
+* video 요소가 컨테이너 내에서 오버플로우 되지 않도록 유의한다. `width`와 `max-width`속성을 추가하여 동영상의 원하는 크기와 최대크기를 지정하면 브라우저가 자동으로 높이를 계산한다. 
+
+``` javascript
+video { 
+    max-width: 100%; 
+    width: 320px; 
+}
+
+```
+
+## 다음단계
+동영상은 얻었다. 이제 이것으로 어떻게 스트리밍 할 것인지 다음 장에서 알아보자!
