@@ -100,7 +100,7 @@ function successCallback(stream) {
 }
 ```
 
-## 보너스 팁
+## 보너스 점수
 
 * `getUserMedia()`로 전달된 `stream`오브젝트는 전역 스코프 이므로 브라우저 콘솔을 열어 _stream_ 입력 후 엔터로 검사해볼 수 있다.\(맥 사용자의 크롬 콘솔을 보는 방법은 Ctrl-Shilt-J 또는 Command-Option-J 이다\)
 * `stream.getVideoTracks()` 함수의 리턴값은 무엇인가?
@@ -108,6 +108,7 @@ function successCallback(stream) {
 * constraints 오브젝트를 확인해 보자: `{audio:true, video:true}` 로 변경하면 어떤 결과가 나올까?
 * 동영상의 크기는 얼마나 되는가? 화면에 출력되는 사이즈가 아닌 실제 사이즈를 javascript로 가져오려면 어떻게 해야 하나? 크롬 개발자도구를 확인해보자.
 * 아래와 같이 video 요소에 CSS 필터를 추가해 보자.
+
   ```javascript
   video {
   -webkit-filter: blur(4px) invert(1) opacity(0.5);
@@ -115,6 +116,7 @@ function successCallback(stream) {
   ```
 
 * 아래와 같이 SVG 필터를 추가해 보자.
+
   ```javascript
   video {
    filter: hue-rotate(180deg) saturate(200%);
@@ -124,3 +126,16 @@ function successCallback(stream) {
   ```
 
 
+## 지금까지 배운 것들
+
+이번 장에서는
+
+* 웹캠에서 동영상을 가져오는 방법과
+* 미디어의 제약사항들을 설정하는 방법 그리고
+* video 요소를 다루는 방법
+  에 대해 배웠다. 전체 소스는 **step-01** 디렉토리에 있다.
+
+## 팁
+
+* `video` 요소에 'autoplay\` 속성을 기억하라. 이 속성이 없으면 단일프레임만 보이게 된다. 
+* `getUserMedia()` 제약사항들에 대한 더 많은 옵션들이 있으니  [](/webrtc.github.io/samples/src/content/peerconnection/constraints "webrtc.github.io/samples/src/content/peerconnection/constraints")에서 확인하기 바란다. 
