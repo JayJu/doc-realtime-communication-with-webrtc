@@ -12,7 +12,7 @@
 
 **작업디렉토리** 내 **index.html**에 `video` 와 `script`엘리먼트를 추가한다.
 
-```html
+``` html
 <!DOCTYPE html>
 <html>
 
@@ -44,13 +44,29 @@
 ```javascript
 'use strict';
 
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+navigator.getUserMedia = navigator.getUserMedia ||
+     navigator.webkitGetUserMedia ||
+     navigator.mozGetUserMedia;
 
-var constraints = { audio: false, video: true};var video = document.querySelector('video');
+var constraints = { 
+    audio: false, 
+    video: true
+};
 
-function successCallback(stream) { window.stream = stream; // stream available to console if (window.URL) { video.src = window.URL.createObjectURL(stream); } else { video.src = stream; }}
+var video = document.querySelector('video');
 
-function errorCallback(error) { console.log('navigator.getUserMedia error: ', error);}
+function successCallback(stream) { 
+    window.stream = stream; // stream available to console 
+    if (window.URL) { 
+        video.src = window.URL.createObjectURL(stream); 
+    } else { 
+        video.src = stream; 
+    }
+}
+
+function errorCallback(error) {
+    console.log('navigator.getUserMedia error: ', error);
+}
 
 navigator.getUserMedia(constraints, successCallback, errorCallback);
 
@@ -63,7 +79,8 @@ navigator.getUserMedia(constraints, successCallback, errorCallback);
 브라우저에서 **index.html**를 열어 아래와같은 웹캠영상이 뜨는지 확인한다.
 ![](/img/ch401.png)
 
-> gUM API의 더 나은 사용방법
+> **gUM API의 더 나은 사용방법**
+
 > 만약 위 코드가 옛날 스타일이라 생각했다면 맞다.
 > 우리는 현재 브라우저들의 호환성을 위해 `getUserMedia()`의 콜백 버전을 사용했다.
 > [MediaDevices API](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices)와 더 나은 에러핸들링을 이용한 Promise 버전은 [https:\/\/github.com\/webrtc\/samples](https://github.com/webrtc/samples) 데모에서 확인할 수 있다.
@@ -76,7 +93,7 @@ navigator.getUserMedia(constraints, successCallback, errorCallback);
 navigator.getUserMedia(constraints, successCallback, errorCallback);
 ```
 
-이 방법이 상대적으로 신기술인 이유로 브라우져들이 아직까진 `getUserMedia`를 접두어로 네이밍하고 있다. **main.js** 의 가장 상단에 이 코드를 넣은것도 그런 이유 때문이다.
+이 방법이 상대적으로 신기술인 이유로 브라우져들이 아직까진 `getUserMedia`를 접두어로 이름을 짓고 있다. **main.js** 의 가장 상단에 이 코드를 넣은 것도 그런 이유 때문이다.
 
 `constraints` 인자는 가져올 미디어를 지정하는데 사용한다. - 여기서는 음성은 제외하고 동영상만 지정한다.
 
@@ -100,7 +117,7 @@ function successCallback(stream) {
 }
 ```
 
-## 보너스 점수
+## 좀 더 알아보기
 
 * `getUserMedia()`로 전달된 `stream`오브젝트는 전역 스코프 이므로 브라우저 콘솔을 열어 _stream_ 입력 후 엔터로 검사해볼 수 있다.\(맥 사용자의 크롬 콘솔을 보는 방법은 Ctrl-Shilt-J 또는 Command-Option-J 이다\)
 * `stream.getVideoTracks()` 함수의 리턴값은 무엇인가?
@@ -138,12 +155,13 @@ function successCallback(stream) {
 ## 팁
 
 * `video` 요소에 'autoplay\` 속성을 기억하라. 이 속성이 없으면 단일프레임만 보이게 된다. 
-* `getUserMedia()` 제약사항들에 대한 더 많은 옵션들이 있으니  [](http://webrtc.github.io/samples/src/content/peerconnection/constraints "http://webrtc.github.io/samples/src/content/peerconnection/constraints")에서 확인하기 바란다. 
+* `getUserMedia()` 제약사항들에 대한 더 많은 옵션들이 있으니  에서 확인하기 바란다. 
 
 ## Best practice
+
 * video 요소가 컨테이너 내에서 오버플로우 되지 않도록 유의한다. `width`와 `max-width`속성을 추가하여 동영상의 원하는 크기와 최대크기를 지정하면 브라우저가 자동으로 높이를 계산한다. 
 
-``` javascript
+```javascript
 video { 
     max-width: 100%; 
     width: 320px; 
@@ -152,4 +170,6 @@ video {
 ```
 
 ## 다음단계
+
 동영상은 얻었다. 이제 이것으로 어떻게 스트리밍 할 것인지 다음 장에서 알아보자!
+
