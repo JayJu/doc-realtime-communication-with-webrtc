@@ -128,4 +128,4 @@ pc1.onicecandidate = function(e) {
 
 > 이 부분은 STUN 과 TURN 서버들을 지정할 때 사용한다. 
 
-> WebRTC는 유저들이 최단경로로 연결될 수 있도록 peer-to-peer 기반으로 설계되었으며 현실 네트워킹\(NAT나 방화벽 등\)에 잘 대응할 수 있도록 구현되어 있다.
+> WebRTC는 유저들이 최단경로로 연결될 수 있도록 peer-to-peer 기반으로 설계되었으며 현실 네트워킹\([NAT게이트웨이](https://en.wikipedia.org/wiki/NAT_traversal)나 방화벽 등\)에 잘 대응할 수 있도록 구현되어 있다.
