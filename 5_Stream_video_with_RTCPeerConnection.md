@@ -113,7 +113,7 @@ WebRTC peer들 간 call을 설정하기 위해선 3단계의 작업이 필요하
 
 처음에 할 일은 서로의 네트워크 정보를 교환하는 것이다. '후보들을 찾는다' 라는 표현은 [ICE](https://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment) 프레임워크를 사용하여 네트워크 인터페이스와 포트들을 찾는 절차를 의미한다.
 
-1) 앨리스는 RTCPeerConnection 객체를 생성하고 `onicecandidate` 이벤트 핸들러를 등록한다. **main.js**의 아래 코드블럭에 해당한다.
+1\) 앨리스는 RTCPeerConnection 객체를 생성하고 `onicecandidate` 이벤트 핸들러를 등록한다. **main.js**의 아래 코드블럭에 해당한다.
 
 ```javascript
 pc1 = new RTCPeerConnection(servers); 
@@ -132,12 +132,15 @@ pc1.onicecandidate = function(e) {
 > 
 > 이 절차의 한 부분으로 WebRTC API들은 당신 컴퓨터의 IP주소를 가져오기 위해 STUN 서버를 사용하고 peer-to-peer 연결이 실패할 경우 를 대비해 릴레이 서버 역할을 할 수 있도록 TURN 서버를 사용한다. 상세한 정보는 [WebRTC in the real world](https://www.html5rocks.com/en/tutorials/webrtc/infrastructure)애서 확인 할 수 있다.
 
-2) 앨리스는 `getUserMedia()`를 호출하고 전달받은 스트림을 다음과 같이 추가한다. 
+2\) 앨리스는 `getUserMedia()`를 호출하고 전달받은 스트림을 다음과 같이 추가한다.
 
 ```javascript
 pc1.addStream(localStream);
 ```
 
-3) 1단계의 `onicecandiate` 핸들러는 네트워크 후보들이 연결 가능한 상태가 될 때 호출된다.
+3\) 1단계의 `onicecandiate` 핸들러는 네트워크 후보들이 연결 가능한 상태가 될 때 호출된다.
 
-4) 
+4\) 앨리스는 직렬화된 후보 데이터를 밥에게 보낸다. 실제 어플리케이션에서 이 절차\(**시그널링**으로 알려진\)는 메시징 서비스\(다음 단계에서 알아보도록 한다.\)를 통해 이루어진다. - 이 예제에서는RTCPeerConnection 객체들이 같은 페이지에 있기 때문에 외부 메시지는 필요하지 않다)
+
+
+
