@@ -128,6 +128,6 @@ pc1.onicecandidate = function(e) {
 
 > 이 부분은 STUN 과 TURN 서버들을 지정할 때 사용한다. 
 
-> WebRTC는 유저들이 최단경로로 연결될 수 있도록 peer-to-peer 기반으로 설계되었으며 현실 네트워킹\([NAT게이트웨이](https://en.wikipedia.org/wiki/NAT_traversal)나 방화벽 등\)에 잘 대응할 수 있도록 구현되어 있다.
+> WebRTC는 유저들이 최단경로로 연결될 수 있도록 peer-to-peer 기반으로 설계되었지만 또한 현실 네트워킹\([NAT게이트웨이](https://en.wikipedia.org/wiki/NAT_traversal)나 방화벽 등\)에 잘 대응할 수 있도록 구현되어 있다.
 
 > 이 절차의 한 부분으로 WebRTC API들은 당신 컴퓨터의 IP주소를 가져오기 위해 STUN 서버를 사용하고 peer-to-peer 연결이 실패할 경우 를 대비해 릴레이 서버 역할을 할 수 있도록 TURN 서버를 사용한다. 상세한 정보는 [WebRTC in the real world](https://www.html5rocks.com/en/tutorials/webrtc/infrastructure)애서 확인 할 수 있다.
