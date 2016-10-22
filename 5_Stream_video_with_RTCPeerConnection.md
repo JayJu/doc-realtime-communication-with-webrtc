@@ -132,7 +132,7 @@ pc1.onicecandidate = function(e) {
 
 > 이 절차의 한 부분으로 WebRTC API들은 당신 컴퓨터의 IP주소를 가져오기 위해 STUN 서버를 사용하고 peer-to-peer 연결이 실패할 경우 를 대비해 릴레이 서버 역할을 할 수 있도록 TURN 서버를 사용한다. 상세한 정보는 [WebRTC in the real world](https://www.html5rocks.com/en/tutorials/webrtc/infrastructure)애서 확인 할 수 있다.
 
-2. 앨리스는 `getUserMedia()`를 호출하고 전달받은 스트림을 다음과 같이 추가한다. 
+ 2. 앨리스는 `getUserMedia()`를 호출하고 전달받은 스트림을 다음과 같이 추가한다. 
 
 ``` javascript
 pc1.addStream(localStream);
