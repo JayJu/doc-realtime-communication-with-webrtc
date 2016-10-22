@@ -106,16 +106,16 @@ WebRTC는 **peer**라 부르는 WebRTC 클라이언트들 끼리 영상을 스�
 WebRTC peer들 간 call을 설정하기 위해선 3단계의 작업이 필요하다.
 
 * RTCPeerConnection을 생성한 후 `getUserMedia()`로 가져온 로컬 스트림을 추가한다.
-* 네크워크 정보([ICE](https://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment) 후보라 부르는 연결 가능한 단말)를 가져와 공유한다. 
+* 네크워크 정보\([ICE](https://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment) 후보라 부르는 연결 가능한 단말\)를 가져와 공유한다. 
 * 로컬과 리모트 정보\([SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) 포맷의 로컬 미디어 메타정보\)들을 가져와 공유한다: 
 
 앨리스와 밥이 화상채팅을 하기 위해 RTCPeerConnection을 사용한다고 가정하자.
 
-처음에 할 일은 서로의 네트워크 정보를 교환하는 것이다. '후보들을 찾는다' 라는 표현은 [ICE](https://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment) 프레임워크를 사용하여 네트워크 인터페이스와 포트들을 찾는 절차를 의미한다. 
+처음에 할 일은 서로의 네트워크 정보를 교환하는 것이다. '후보들을 찾는다' 라는 표현은 [ICE](https://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment) 프레임워크를 사용하여 네트워크 인터페이스와 포트들을 찾는 절차를 의미한다.
 
 1. 앨리스는 RTCPeerConnection 객체를 생성하고 `onicecandidate` 이벤트 핸들러를 등록한다. **main.js**의 아래 코드블럭에 해당한다.
 
-``` javascript
+```javascript
 pc1 = new RTCPeerConnection(servers); 
 trace('Created local peer connection object pc1'); 
 pc1.onicecandidate = function(e) {   
@@ -125,19 +125,18 @@ pc1.onicecandidate = function(e) {
 ```
 
 > 이번 예제에서는 RTCPeerConnection 의 `servers` 인자를 사용하지 않았다.
-
-> 이 부분은 STUN 과 TURN 서버들을 지정할 때 사용한다. 
-
+> 
+> 이 부분은 STUN 과 TURN 서버들을 지정할 때 사용한다.
+> 
 > WebRTC는 유저들이 최단경로로 연결될 수 있도록 peer-to-peer 기반으로 설계되었지만 또한 현실 네트워킹\([NAT게이트웨이](https://en.wikipedia.org/wiki/NAT_traversal)나 방화벽 등\)에 잘 대응할 수 있도록 구현되어 있다.
-
+> 
 > 이 절차의 한 부분으로 WebRTC API들은 당신 컴퓨터의 IP주소를 가져오기 위해 STUN 서버를 사용하고 peer-to-peer 연결이 실패할 경우 를 대비해 릴레이 서버 역할을 할 수 있도록 TURN 서버를 사용한다. 상세한 정보는 [WebRTC in the real world](https://www.html5rocks.com/en/tutorials/webrtc/infrastructure)애서 확인 할 수 있다.
 
 2. 앨리스는 `getUserMedia()`를 호출하고 전달받은 스트림을 다음과 같이 추가한다. 
 
-``` javascript
+```javascript
 pc1.addStream(localStream);
 ```
 
-3. 1단계의 `onicecandiate` 핸들러는 네트워크 후보들이 연결 가능한 상태가 될 때 호출된다.
-
+1. 1단계의 `onicecandiate` 핸들러는 네트워크 후보들이 연결 가능한 상태가 될 때 호출된다.
 
