@@ -123,3 +123,9 @@ pc1.onicecandidate = function(e) {
 };
 
 ```
+
+> 이번 예제에서는 RTCPeerConnection 의 `servers` 인자를 사용하지 않았다.
+
+> 이 부분은 STUN 과 TURN 서버들을 지정할 때 사용한다. 
+
+> WebRTC는 peer-to-peer 로 동작하도록 설계되었기 때문에 
