@@ -145,7 +145,23 @@ pc1.addStream(localStream);
 5) 밥은 앨리스로부터 후보 데이터를 받은 후 `addIceCandiate()`를 호출하여 후보 데이터를 리모트 peer 의 명세서에 추가한다.
 
 ``` javascript
-function onIceCandidate(pc, event) { if (event.candidate) { getOtherPc(pc).addIceCandidate( new RTCIceCandidate(event.candidate) ).then( function() { onAddIceCandidateSuccess(pc); }, function(err) { onAddIceCandidateError(pc, err); } ); trace(getName(pc) + ' ICE candidate: \n' + event.candidate.candidate); }}
+function onIceCandidate(pc, event) { 
+  if (event.candidate) { 
+    getOtherPc(pc).addIceCandidate( 
+      new RTCIceCandidate(event.candidate) 
+    ).then( 
+      function() { 
+        onAddIceCandidateSuccess(pc); 
+      }, 
+      function(err) { 
+        onAddIceCandidateError(pc, err); 
+      } 
+    ); 
+
+    trace(getName(pc) + ' ICE candidate: \n' 
+      + event.candidate.candidate); 
+  }
+}
 
 ```
 
