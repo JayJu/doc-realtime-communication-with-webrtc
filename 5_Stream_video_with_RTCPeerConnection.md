@@ -142,5 +142,10 @@ pc1.addStream(localStream);
 
 4\) 앨리스는 직렬화된 후보 데이터를 밥에게 보낸다. 실제 어플리케이션에서 이 절차\(**시그널링**으로 알려진\)는 메시징 서비스\(다음 단계에서 알아보도록 한다.\)를 통해 이루어진다. - 이 예제에서는RTCPeerConnection 객체들이 같은 페이지에 있기 때문에 외부 메시지는 필요하지 않다)
 
+5) 밥은 앨리스로부터 후보 데이터를 받은 후 `addIceCandiate()`를 호출하여 후보 데이터를 리모트 peer 의 명세서에 추가한다.
 
+``` javascript
+function onIceCandidate(pc, event) { if (event.candidate) { getOtherPc(pc).addIceCandidate( new RTCIceCandidate(event.candidate) ).then( function() { onAddIceCandidateSuccess(pc); }, function(err) { onAddIceCandidateError(pc, err); } ); trace(getName(pc) + ' ICE candidate: \n' + event.candidate.candidate); }}
+
+```
 
