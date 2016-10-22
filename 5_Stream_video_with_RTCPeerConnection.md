@@ -56,11 +56,17 @@ RTCPeerConnection은 동영상과 음성, 그리고 데이터를 주고 받을 �
 
  <h1>Realtime communication with WebRTC</h1>
 
- <video id="localVideo" autoplay></video> <video id="remoteVideo" autoplay></video>
+ <video id="localVideo" autoplay></video> 
+ <video id="remoteVideo" autoplay></video>
 
- <div> <button id="startButton">Start</button> <button id="callButton">Call</button> <button id="hangupButton">Hang Up</button> </div>
+ <div>
+   <button id="startButton">Start</button> 
+   <button id="callButton">Call</button> 
+   <button id="hangupButton">Hang Up</button> 
+ </div>
 
- <script src="js/lib/adapter.js"></script> <script src="js/main.js"></script>
+ <script src="js/lib/adapter.js"></script>
+ <script src="js/main.js"></script>
 
 </body>
 
@@ -68,4 +74,18 @@ RTCPeerConnection은 동영상과 음성, 그리고 데이터를 주고 받을 �
 
 ```
 
+## RTCPeerConnection 코드 설치하기
+**main.js** 파일을 **step-02** 폴더의 버전으로 변경한다.
+
+> 코드랩의 많은 코드들을 잘라내서 붙여넣기 하는것이 효율적인 방법은 아니지만 RTCPeerConnection을 실행하기 위해선 딱히 대안이 없다. 
+
+> 이제 이 코드들이 어떻게 동작하는지 알아보자. 
+
+## 요청(call) 만들기
+**index.html** 을 띄우고 웹캠에서 영상을 가져오기 위해 **start** 버튼을 클릭한다. 그런 다음 peer 커넥션을 생성하기 위해 **Call** 버튼을 클릭한다. 두개의 video에 동일한 영상이 보일 것이다. 브라우져 콘솔을 열어 WebRTC 로그글을 확인하자.
+
+## 어떻게 동작할까
+이번장은 꽤 많은 것들에 대해 알아야 한다. 
+> 이 부분을 건너 뛰고 싶다면, 그렇게 해도 상관 없다.
+> 코드랩을 계속 하는 데 지장은 없다.
 
