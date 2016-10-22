@@ -3,7 +3,7 @@
 WebRTC는 웹과 네이티브 앱에서 음성과 영상, 그리고 데이터를 실시간으로 주고 받을 수 있게 하는 오픈소스 프로젝트이다. 
 WebRTC는 몇 가지의 자바스크립트 API로 구성된다\(링크를 클릭하면 데모를 볼 수 있다\).
 
-* [getUserMedia\(\)](https://webrtc.github.io/samples/src/content/getusermedia/gum/): 음성과 영상 캡쳐하기
+* [getUserMedia\(\)](https://webrtc.github.io/samples/src/content/getusermedia/gum/): 음성과 영상 가져오기
 
 * [MediaRecorder](https://webrtc.github.io/samples/src/content/getusermedia/record/): 음성과 영상 녹화하기
 
@@ -18,7 +18,7 @@ WebRTC는 몇 가지의 자바스크립트 API로 구성된다\(링크를 클릭
 
 ## 시그널링\(signaling\)이란?
 
-WebRTC는 브라우저 사이의 데이터 스트림을 주고 받기 위해 필요한 코디네이션 메커니즘과 제어메시지 전달을 위해 RTCPeerConnection API를 사용하며 이것이 시그널링\(signaling\)으로 알려진 프로세스 이다. 시그널링 메서드와 프로토콜은 WebRTC에 정의되어 있지 않다. 여기서는 Node를 사용하지만 [다른 대안들](https://github.com/muaz-khan/WebRTC-Experiment/blob/master/Signaling.md)도 많다.
+WebRTC는 브라우저 사이의 데이터 스트림을 주고 받기 위해 필요한 코디네이션 메커니즘과 제어메시지 전달을 위해 RTCPeerConnection API를 사용하는데 이러한 프로세스를 시그널링\(signaling\)이라 한다. 시그널링 메서드와 프로토콜은 WebRTC에 정의되어 있지 않다. 여기서는 Node를 사용하지만 [다른 대안들](https://github.com/muaz-khan/WebRTC-Experiment/blob/master/Signaling.md)도 많다.
 
 ## STUN과 TURN 이란?
 
