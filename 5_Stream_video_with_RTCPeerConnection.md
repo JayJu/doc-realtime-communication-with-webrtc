@@ -115,14 +115,14 @@ WebRTC peer들 간 call을 설정하기 위해선 3단계의 작업이 필요하
 
 1. 앨리스는 RTCPeerConnection 객체를 생성하고 `onicecandidate` 이벤트 핸들러를 등록한다. **main.js**의 아래 코드블럭에 해당한다.
 
-```javascript
-pc1 = new RTCPeerConnection(servers); 
-trace('Created local peer connection object pc1'); 
-pc1.onicecandidate = function(e) {   
-  onIceCandidate(pc1, e); 
+    ```javascript
+    pc1 = new RTCPeerConnection(servers); 
+    trace('Created local peer connection object pc1'); 
+    pc1.onicecandidate = function(e) {   
+      onIceCandidate(pc1, e); 
 };
 
-```
+    ```
 
 > 이번 예제에서는 RTCPeerConnection 의 `servers` 인자를 사용하지 않았다.
 > 
