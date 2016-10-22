@@ -12,7 +12,7 @@
 
 **작업디렉토리** 내 **index.html**에 `video` 와 `script`엘리먼트를 추가한다.
 
-``` html
+``` javascript
 <!DOCTYPE html>
 <html>
 
