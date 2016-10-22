@@ -41,7 +41,7 @@
 
 **js**디렉토리에 **main.js** 파일을 추가한다.
 
-```javascript
+``` javascript
 'use strict';
 
 navigator.getUserMedia = navigator.getUserMedia ||
