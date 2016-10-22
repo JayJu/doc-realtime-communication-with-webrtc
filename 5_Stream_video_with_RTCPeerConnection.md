@@ -138,30 +138,30 @@ WebRTC peer들 간 call을 설정하기 위해선 3단계의 작업이 필요하
     pc1.addStream(localStream);
     ```
 
-3\) 1단계의 `onicecandiate` 핸들러는 네트워크 후보들이 연결 가능한 상태가 될 때 호출된다.
+3. 1단계의 `onicecandiate` 핸들러는 네트워크 후보들이 연결 가능한 상태가 될 때 호출된다.
 
-4\) 앨리스는 직렬화된 후보 데이터를 밥에게 보낸다. 실제 어플리케이션에서 이 절차\(**시그널링**으로 알려진\)는 메시징 서비스\(다음 단계에서 알아보도록 한다.\)를 통해 이루어진다. - 이 예제에서는RTCPeerConnection 객체들이 같은 페이지에 있기 때문에 외부 메시지는 필요하지 않다)
+4. 앨리스는 직렬화된 후보 데이터를 밥에게 보낸다. 실제 어플리케이션에서 이 절차\(**시그널링**으로 알려진\)는 메시징 서비스\(다음 단계에서 알아보도록 한다.\)를 통해 이루어진다. - 이 예제에서는RTCPeerConnection 객체들이 같은 페이지에 있기 때문에 외부 메시지는 필요하지 않다)
 
-5) 밥은 앨리스로부터 후보 데이터를 받은 후 `addIceCandiate()`를 호출하여 후보 데이터를 리모트 peer 의 명세서에 추가한다.
+5. 밥은 앨리스로부터 후보 데이터를 받은 후 `addIceCandiate()`를 호출하여 후보 데이터를 리모트 peer 의 명세서에 추가한다.
 
-``` javascript
-function onIceCandidate(pc, event) { 
-  if (event.candidate) { 
-    getOtherPc(pc).addIceCandidate( 
-      new RTCIceCandidate(event.candidate) 
-    ).then( 
-      function() { 
-        onAddIceCandidateSuccess(pc); 
-      }, 
-      function(err) { 
-        onAddIceCandidateError(pc, err); 
-      } 
-    ); 
+    ``` javascript
+    function onIceCandidate(pc, event) { 
+      if (event.candidate) { 
+        getOtherPc(pc).addIceCandidate( 
+          new RTCIceCandidate(event.candidate) 
+        ).then( 
+          function() { 
+            onAddIceCandidateSuccess(pc); 
+          }, 
+          function(err) { 
+            onAddIceCandidateError(pc, err); 
+          } 
+        ); 
 
-    trace(getName(pc) + ' ICE candidate: \n' 
+        trace(getName(pc) + ' ICE candidate: \n' 
       + event.candidate.candidate); 
-  }
-}
+      }    
+    }
 
-```
+    ```
 또한 WebRTC는 로컬과 리모트의 음성/영상 미디어 정보(해상도나 코덱정보 같은)를 확인하여 상호 교환해야 한다. 미디어 구성정보를 주고받는 시그널링은 **offer**와**answer**로 불리는 blob으로 구성된 메타데이터들의 상호교환 절차이며 이 메타데이터들은 [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol)로 약칭되는 Session Description Protocol 포맷을 사용한다. 
