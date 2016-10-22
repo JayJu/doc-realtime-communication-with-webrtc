@@ -154,7 +154,7 @@ function successCallback(stream) {
 
 ## 팁
 
-* `video` 요소에 'autoplay\` 속성을 기억하라. 이 속성이 없으면 단일프레임만 보이게 된다. 
+* `video` 요소에 'autoplay\` 속성을 기억하라. 이 속성이 없으면 사진처럼 단일프레임만 보이게 된다. 
 * `getUserMedia()` 제약사항들에 대한 더 많은 옵션들이 있으니  에서 확인하기 바란다. 
 
 ## Best practice
