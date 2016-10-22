@@ -109,3 +109,17 @@ WebRTC peer들 간 call을 설정하기 위해선 3단계의 작업이 필요하
 * 네크워크 정보([ICE](https://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment) 후보라 부르는 연결 가능한 단말)를 가져와 공유한다. 
 * 로컬과 리모트 정보\([SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) 포맷의 로컬 미디어 메타정보\)들을 가져와 공유한다: 
 
+앨리스와 밥이 화상채팅을 하기 위해 RTCPeerConnection을 사용한다고 가정하자.
+
+처음에 할 일은 서로의 네트워크 정보를 교환하는 것이다. '후보들을 찾는다' 라는 표현은 [ICE](https://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment) 프레임워크를 사용하여 네트워크 인터페이스와 포트들을 찾는 절차를 의미한다. 
+
+1. 앨리스는 RTCPeerConnection 객체를 생성하고 `onicecandidate` 이벤트 핸들러를 등록한다. **main.js**의 아래 코드블럭에 해당한다.
+
+``` javascript
+pc1 = new RTCPeerConnection(servers); 
+trace('Created local peer connection object pc1'); 
+pc1.onicecandidate = function(e) {   
+  onIceCandidate(pc1, e); 
+};
+
+```
