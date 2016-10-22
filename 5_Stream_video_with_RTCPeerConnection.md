@@ -39,3 +39,33 @@ RTCPeerConnection은 동영상과 음성, 그리고 데이터를 주고 받을 �
 > 이 장에서는 **adapter.js**의 최신버전의 로컬사본을 연결하였다. - 연습용으로는 괜찮으나 운영서버에 적용하는것은 적절치 않다. [GitHub 레파지토리의 adapter.js ](https://github.com/webrtc/adapter)는 항상 최신버전의 기능에 대해서만 기술한다.
 
 > WebRTC의 상호운영성에(interop) 대한 모든 정보는 [webrtc.org/web-apis/interop](https://webrtc.org/web-apis/interop/)에서 확인 할 수 있다.
+
+**index.html**은 아래와 같은 모습이 될 것이다. 
+``` javascript
+<!DOCTYPE html><html>
+
+<head>
+
+ <title>Realtime communication with WebRTC</title>
+
+ <link rel="stylesheet" href="css/main.css" />
+
+</head>
+
+<body>
+
+ <h1>Realtime communication with WebRTC</h1>
+
+ <video id="localVideo" autoplay></video> <video id="remoteVideo" autoplay></video>
+
+ <div> <button id="startButton">Start</button> <button id="callButton">Call</button> <button id="hangupButton">Hang Up</button> </div>
+
+ <script src="js/lib/adapter.js"></script> <script src="js/main.js"></script>
+
+</body>
+
+</html>
+
+```
+
+
