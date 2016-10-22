@@ -164,4 +164,4 @@ function onIceCandidate(pc, event) {
 }
 
 ```
-
+또한 WebRTC는 로컬과 리모트의 음성/영상 미디어 정보(해상도나 코덱정보 같은)를 확인하여 상호 교환해야 한다. 미디어 구성정보를 주고받는 시그널링은 **offer**와**answer**로 불리는 blob으로 구성된 메타데이터들의 상호교환 절차이며 이 메타데이터들은 [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol)로 약칭되는 Session Description Protocol 포맷을 사용한다. 
