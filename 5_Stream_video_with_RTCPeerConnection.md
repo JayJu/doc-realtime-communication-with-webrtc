@@ -138,3 +138,6 @@ pc1.onicecandidate = function(e) {
 pc1.addStream(localStream);
 ```
 
+3. 1단계의 `onicecandiate` 핸들러는 네트워크 후보들이 연결 가능한 상태가 될 때 호출된다.
+
+
