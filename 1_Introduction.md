@@ -22,7 +22,7 @@ WebRTC는 브라우저 사이의 데이터 스트림을 주고 받기 위해 필
 
 ## STUN과 TURN 이란?
 
-WebRTC는 유저들이 가장 가까운 라우터로 연결할 수 있도록 peer-to-peer 기반으로 설계되었으며 현실 네트워킹\(NAT나 방화벽 등\)에 잘 대응할 수 있도록 구현되어 있다. 이러한 프로세스의 한 부분으로 WebRTC는 유저 컴퓨터의 IP주소를 가져오는 STUN서버와 p2p 연결이 실패할 경우를 대비해 릴레이 서버 기능을 하는 TURN 서버를 사용한다. \(상세설명은 [이곳](https://www.html5rocks.com/en/tutorials/webrtc/infrastructure/)을 참고\)
+WebRTC는 유저들이 최단경로로 연결될 수 있도록 peer-to-peer 기반으로 설계되었으며 현실 네트워킹\(NAT나 방화벽 등\)에 잘 대응할 수 있도록 구현되어 있다. 이러한 프로세스의 한 부분으로 WebRTC는 유저 컴퓨터의 IP주소를 가져오는 STUN서버와 p2p 연결이 실패할 경우를 대비해 릴레이 서버 기능을 하는 TURN 서버를 사용한다. \(상세설명은 [이곳](https://www.html5rocks.com/en/tutorials/webrtc/infrastructure/)을 참고\)
 
 ## WebRTC는 안전한가?
 
