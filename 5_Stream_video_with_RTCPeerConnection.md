@@ -135,5 +135,6 @@ pc1.onicecandidate = function(e) {
 2. 앨리스는 `getUserMedia()`를 호출하고 전달받은 스트림을 다음과 같이 추가한다. 
 
 ``` javascript
-
+pc1.addStream(localStream);
 ```
+
