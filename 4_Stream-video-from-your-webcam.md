@@ -121,6 +121,7 @@ function successCallback(stream) {
 
 * `getUserMedia()`로 전달된 `stream`오브젝트는 전역 스코프 이므로 브라우저 콘솔을 열어 _stream_ 입력 후 엔터로 검사해볼 수 있다.\(맥 사용자의 크롬 콘솔을 보는 방법은 Ctrl-Shilt-J 또는 Command-Option-J 이다\)
 * `stream.getVideoTracks()` 함수의 리턴값은 무엇인가?
+![](/img/ch402.png)
 * `stream.getVideoTracks()[0].stop()`을 호출해 보자.
 * constraints 오브젝트를 확인해 보자: `{audio:true, video:true}` 로 변경하면 어떤 결과가 나올까?
 * 동영상의 크기는 얼마나 되는가? 화면에 출력되는 사이즈가 아닌 실제 사이즈를 javascript로 가져오려면 어떻게 해야 하나? 크롬 개발자도구를 확인해보자.
