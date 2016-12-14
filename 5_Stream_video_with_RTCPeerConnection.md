@@ -168,12 +168,12 @@ WebRTC peer들 간 call을 설정하기 위해선 3단계의 작업이 필요하
 
     1. 앨리스는 RTCPeerConnection의 ```createOffer()``` 메서드를 실행한다. 반환된 promise는 RTCSessionDescription을 제공한다 : Alice의 로컬 세션 명세 :
     ``` javascript
-pc1.createOffer(
-    offerOptions
-  ).then(
-    onCreateOfferSuccess,
-    onCreateSessionDescriptionError
-  );
+    pc1.createOffer(
+        offerOptions
+        ).then(
+        onCreateOfferSuccess,
+        onCreateSessionDescriptionError
+      );
     ```
     2. 성공하면 앨리스는 ```setLocalDescription()``` 을 사용하여 로컬 명세를 설정한 다음 이 세션 명세를 시그널링 채널을 통해 밥에게 전달한다.
 
@@ -182,3 +182,65 @@ pc1.createOffer(
     4. 밥은 RTCPeerConnection의 ```createAnswer()``` 메소드를 실행하여 앨리스에게 받은 리모트 명세를 전달하여 로컬 세션을 생성할 수 있다. ```createAnswer()``` promise는 RTCSessionDescription을 전달한다. 밥은 이를 로컬 명세로 설정하고 Alice에게 보낸다.
 
     5. 앨리스가 밥의 세션 명세를 받게 되면 ```setRemoteDescription()``` 을 사용하여 리모트 명세로 설정한다.
+
+    ``` javascript
+    function onCreateOfferSuccess(desc) {
+          pc1.setLocalDescription(desc).then(
+            function() {
+              onSetLocalSuccess(pc1);
+            },
+            onSetSessionDescriptionError
+          );
+          pc2.setRemoteDescription(desc).then(
+             function() {
+              onSetRemoteSuccess(pc2);
+            },
+            onSetSessionDescriptionError
+          );
+          // Since the 'remote' side has no media stream we need
+          // to pass in the right constraints in order for it to
+          // accept the incoming offer of audio and video.
+          pc2.createAnswer().then(
+              onCreateAnswerSuccess,
+              onCreateSessionDescriptionError
+          );
+        }
+    function onCreateAnswerSuccess(desc) {
+        pc2.setLocalDescription(desc).then(
+            function() {
+                onSetLocalSuccess(pc2);
+            },
+            onSetSessionDescriptionError
+          );
+        pc1.setRemoteDescription(desc).then(
+            function() {
+                onSetRemoteSuccess(pc1);
+            },
+            onSetSessionDescriptionError
+        );
+    }
+    ```
+    6. Ping!
+
+## 보너스 점수
+1. **chrome://webrtc-internals** 를 확인해 보자. 이 메뉴는 WebRTC 통계와 디버깅 데이터들을 제공한다. (크롬의 전체 URL 목록은 **chrome://about** 에서 확인할 수 있다)
+
+2. CSS로 페이지를 꾸며보자: 
+  * 비디오를 나란히 배치 해 보자
+  * 더 큰 텍스트와 함께 버튼을 동일한 너비로 만들어 보자
+  * 모바일에서 레이아웃이 작동하는지 확인 해 보자
+
+3. 크롬 개발자 도구에서 ```localStream```, ```pc1```, ```pc2``` 를 확인해 보자.
+
+4. 콘솔에서 ```pc1.localDescription``` 을 확인해 보자. SDP 포맷이 어떻게 생겼는지 확인해 보자.
+
+## 지금까지 배운 것들
+
+이번 장에서는
+
+* WebRTC용 쐐기(shim)인 adapter.js를 이용하여 브라우저간의 차이점을 추상화하고
+* RTCPeerConnection API를 사용하여 비디오를 스트리밍하고
+* 미디어 캡처 및 스트리밍을 제어하고
+* WebRTC 호출을 활성화하여 peer간에 미디어 및 네트워크 정보를 공유하는 방법
+
+에 대해 배웠다. 전체 소스는 **step-02** 디렉토리에 있다.
