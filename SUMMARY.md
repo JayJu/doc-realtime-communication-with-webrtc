@@ -6,4 +6,5 @@
 * [3. Get the sample code](3_Get-the-sample-code.md)
 * [4. Stream video from your webcam](4_Stream-video-from-your-webcam.md)
 * [5. Stream video with RTCPeerConnection](5_Stream_video_with_RTCPeerConnection.md)
+* [6. Use RTCDataChannel to exchange data](6_Use-RTCDataChannel-to-exchang-data.md)
 
