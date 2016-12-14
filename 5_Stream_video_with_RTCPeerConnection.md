@@ -138,11 +138,11 @@ WebRTC peer들 간 call을 설정하기 위해선 3단계의 작업이 필요하
     pc1.addStream(localStream);
     ```
 
-3. 1단계의 `onicecandiate` 핸들러는 네트워크 후보들이 연결 가능한 상태가 될 때 호출된다.
+3. 1단계의 `onicecandiate` 핸들러는 네트워크 후보들이 연결 가능한 상태가 될 때 실행된다.
 
 4. 앨리스는 직렬화된 후보 데이터를 밥에게 보낸다. 실제 어플리케이션에서 이 절차\(**시그널링**으로 알려진\)는 메시징 서비스\(다음 단계에서 알아보도록 한다.\)를 통해 이루어진다. - 이 예제에서는RTCPeerConnection 객체들이 같은 페이지에 있기 때문에 외부 메시지는 필요하지 않다)
 
-5. 밥은 앨리스로부터 후보 데이터를 받은 후 `addIceCandiate()`를 호출하여 후보 데이터를 리모트 peer 의 명세서에 추가한다.
+5. 밥은 앨리스로부터 후보 데이터를 받은 후 `addIceCandiate()`를 실행하여 후보 데이터를 리모트 peer 의 명세서에 추가한다.
 
     ``` javascript
     function onIceCandidate(pc, event) { 
@@ -164,9 +164,9 @@ WebRTC peer들 간 call을 설정하기 위해선 3단계의 작업이 필요하
     }
 
     ```
-또한 WebRTC는 로컬과 리모트의 음성/영상 미디어 정보(해상도나 코덱정보 같은)를 확인하여 상호 교환해야 한다. 미디어 구성정보를 주고받는 시그널링은 **offer**와**answer**로 불리는 blob으로 구성된 메타데이터들의 상호교환 절차이며 이 메타데이터들은 [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol)로 약칭되는 Session Description Protocol 포맷을 사용한다. 
+또한 WebRTC는 로컬과 리모트의 음성/영상 미디어 정보(해상도나 코덱정보 같은)를 확인하여 상호 교환해야 한다. 미디어 구성정보를 주고받는 시그널링은 **offer** 와 **answer** 로 불리는 blob으로 구성된 메타데이터들의 상호교환 절차이며 이 메타데이터들은 [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol)로 약칭되는 Session Description Protocol 포맷을 사용한다. 
 
-    1. 앨리스는 RTCPeerConnection의 ```createOffer()``` 메서드를 호출한다. 반환된 promise는 RTCSessionDescription을 제공한다 : Alice의 로컬 세션 설명 :
+    1. 앨리스는 RTCPeerConnection의 ```createOffer()``` 메서드를 실행한다. 반환된 promise는 RTCSessionDescription을 제공한다 : Alice의 로컬 세션 명세 :
     ``` javascript
 pc1.createOffer(
     offerOptions
@@ -175,4 +175,10 @@ pc1.createOffer(
     onCreateSessionDescriptionError
   );
     ```
-2.
+    2. 성공하면 앨리스는 ```setLocalDescription()``` 을 사용하여 로컬 명세를 설정한 다음 이 세션 명세를 시그널링 채널을 통해 밥에게 전달한다.
+
+    3. 밥은 앨리스가 보낸 명세를 ```setRemoteDescription()``` 을 사용하여 리모트 명세로 설정한다.
+
+    4. 밥은 RTCPeerConnection의 ```createAnswer()``` 메소드를 실행하여 앨리스에게 받은 리모트 명세를 전달하여 로컬 세션을 생성할 수 있다. ```createAnswer()``` promise는 RTCSessionDescription을 전달한다. 밥은 이를 로컬 명세로 설정하고 Alice에게 보낸다.
+
+    5. 앨리스가 밥의 세션 명세를 받게 되면 ```setRemoteDescription()``` 을 사용하여 리모트 명세로 설정한다.
