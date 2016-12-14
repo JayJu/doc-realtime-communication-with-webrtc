@@ -244,3 +244,8 @@ WebRTC peer들 간 call을 설정하기 위해선 3단계의 작업이 필요하
 * WebRTC 호출을 활성화하여 peer간에 미디어 및 네트워크 정보를 공유하는 방법
 
 에 대해 배웠다. 전체 소스는 **step-02** 디렉토리에 있다.
+
+## 팁
+* 이 장에서는 배워야 할 내용이 많았다! RTCPeerConnection에 대해 자세히 설명한 추가자료가 필요하다면 [webrtc.org/start](https://webrtc.org/start/ "webrtc.org/start")를 살펴보자. 이 페이지에는 JavaScript 프레임워크에 대한 제안들이 포함되어 있다(WebRTC를 사용하고 싶지만 API에 대한 부담이 있는 경우를 위해)
+* [GitHub 저장소](https://github.com/webrtc/adapter)에서 adapter.js 대해 자세히 알아보자.
+* 세계 최고의 비디오 채팅 앱이 어떻게 생겼는지보고 싶다면 WebRTC 프로젝트의 WebRTC 호출용 표준 응용프로그램인 AppRTC([데모](https://appr.tc/), [코드](https://github.com/webrtc/apprtc))를 살펴보자. 통화를 위한 준비시간이 500ms 미만이다.
