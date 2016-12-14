@@ -120,6 +120,6 @@ function sendData() {
 }
 ```
 
-RTCDataChannel의 구문은 send () 메서드 및 message 이벤트를 사용하여 WebSocket과 의도적으로 비슷합니다.
+RTCDataChannel의 문법은 ```send()```메서드나 ```message```이벤트들을 사용하여 의도적으로 WebSocket과 비슷하게 되어있다.
 
-dataConstraint의 사용에 주목하십시오. 데이터 채널은 다양한 유형의 데이터 공유가 가능하도록 구성 할 수 있습니다 (예 : 성능 대비 안정적인 전달 우선 순위 지정). Mozilla Developer Network에서 옵션에 대한 자세한 정보를 찾을 수 있습니다.
+```dataConstraint```의 사용에 주목하자. 데이터 채널은 다양한 유형의 데이터 공유가 가능하도록 구성 할 수 있다(예: 성능보다 안정적인 전송을 우선 순위로 지정). [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/createDataChannel) 에서 옵션에 대한 자세한 정보를 찾을 수 있다.
