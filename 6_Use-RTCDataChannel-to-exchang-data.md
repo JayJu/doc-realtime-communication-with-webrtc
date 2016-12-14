@@ -123,3 +123,38 @@ function sendData() {
 RTCDataChannel의 문법은 ```send()```메서드나 ```message```이벤트들을 사용하여 의도적으로 WebSocket과 비슷하게 되어있다.
 
 ```dataConstraint```의 사용에 주목하자. 데이터 채널은 다양한 유형의 데이터 공유가 가능하도록 구성 할 수 있다(예: 성능보다 안정적인 전송을 우선 순위로 지정). [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/createDataChannel) 에서 옵션에 대한 자세한 정보를 찾을 수 있다.
+
+> **세 가지 타입의 제약 조건**
+>
+> 혼란스러울 수 있다!
+>
+> 서로 다른 유형의 WebRTC 호출에 대한 설정 옵션을 모두 '제약조건' 이라고 부르기도 한다.
+>
+> 제약 조건 및 옵션에 대해 자세히 알아보자: 
+>
+> * [RTCPeerConnection](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/RTCPeerConnection)
+> * [RTCDataChannel](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/createDataChannel)
+> * [getUserMedia()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia)
+
+## 보너스 점수
+1. WebRTC 데이터 채널에서 사용하는 프로토콜 인 [SCTP](https://bloggeek.me/sctp-data-channel/)를 사용하면 신뢰할 수 있고 순차적인 데이터 전달이 기본적(default)으로 설정된다. RTCDataChannel이 안정적인 데이터 전달을 우선해야 하는 경우는 언제이며 (데이터가 손실된다 하더라도)성능이 우선해야 하는 경우는 언제일까?
+
+2. CSS를 사용하여 페이지 레이아웃을 개선하고 textarea의 placeholder 속성에 "dataChannelReceive"를 추가해 보자.
+
+3. 모바일 장치에서 페이지를 테스트해 보자.
+
+## 지금까지 배운 것들
+
+이번 장에서는
+
+* 두 WebRTC peer간의 연결을 설정하고
+* peer간에 텍스트 데이터를 교환하는 방법
+
+에 대해 배웠다. 전체 소스는 **step-03** 디렉토리에 있다.
+
+## 좀 더 찾아보기
+* [WebRTC 데이터 채널들](https://www.html5rocks.com/en/tutorials/webrtc/datachannels/)(수 년이 지났으나 여전히 읽어볼 가치가 있다)
+* [WebRTC의 데이터 채널로 SCTP가 선택된 이유는 무엇일까?](https://bloggeek.me/sctp-data-channel/)
+
+## 다음단계
+같은 페이지에있는 peer끼리 데이터를 교환하는 방법을 배웠지만 다른 컴퓨터끼리는 어떻게 해야할까? 먼저 메타 데이터 메시지를 교환하기 위해 시그널링 채널을 설정해야한다. 다음 단계에서 어떻게 되는지 알아보자!
