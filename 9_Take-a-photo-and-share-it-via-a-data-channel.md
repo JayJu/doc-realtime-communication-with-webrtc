@@ -35,16 +35,17 @@
   ```
 3. 사용자가 스냅 버튼을 클릭하면 비디오 스트림에서 스냅샷(비디오 프레임)을 가져와 캔버스 요소에 표시한다.
 
-``` javascript
-var photo = document.getElementById('photo');
-var photoContext = photo.getContext('2d');
+  ``` javascript
+  var photo = document.getElementById('photo');
+  var photoContext = photo.getContext('2d');
 
-function snapPhoto() {
-  photoContext.drawImage(video, 0, 0, photo.width, photo.height);
-  show(photo, sendBtn);
-}
-```
+  function snapPhoto() {
+    photoContext.drawImage(video, 0, 0, photo.width, photo.height);
+    show(photo, sendBtn);
+  }
+  ```
 
+4. 사용자가 보내기 버튼을 클릭하면 이미지를 바이트로 변환하고 데이터 채널을 통해 전송합니다.
 ## 보너스 점수
 1. a
 
