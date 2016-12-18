@@ -177,21 +177,24 @@ node index.js
 
 이 어플리케이션은 임의로 회의실 ID를 만들고 해당 ID를 URL에 추가한다. 새 브라우저 탭 또는 창에서 이 URL에 접속한다.
 
-**스냅 및 보내기(Snap & Send)** 버튼을 클릭 한 다음 페이지 하단의 다른 탭에서 수신 영역을 확인한다. 앱이 탭간에 사진을 전송한다.
+** 스냅 및 보내기(Snap & Send)** 버튼을 클릭 한 다음 페이지 하단의 다른 탭에서 수신 영역을 확인한다. 앱이 탭간에 사진을 전송한다.
 
 다음과 같은 내용을 확인한다:
-
+![](/img/ch901.jpg)
 
 ## 보너스 점수
-1. a
+1. 파일 형식을 공유하려면 코드를 어떻게 변경해야 할까?
+
+## 좀 더 찾아보기
+* [MediaStream Image Capture API](https://www.chromestatus.com/features/4843864737185792): 사진을 찍고 카메라를 제어하는 API - 가까운 브라우저에서 곧 사용할 수 있다!
+* 오디오 및 비디오 녹음을위한 MediaRecorder API: [데모](https://webrtc.github.io/samples/src/content/getusermedia/record/), [설명서](https://www.chromestatus.com/features/5929649028726784).
 
 ## 지금까지 배운 것들
 
 이번 장에서는
 
-* a
+* canvas 요소를 사용하여 사진을 찍은 다음 그 데이터를 가져오는 방법
+* 원격 사용자와 이미지 데이터를 교환하는 방법
 
-에 대해 배웠다. 전체 소스는 **step-03** 디렉토리에 있다.
+에 대해 배웠다. 전체 소스는 **step-06** 디렉토리에 있다.
 
-## 좀 더 찾아보기
-* 
