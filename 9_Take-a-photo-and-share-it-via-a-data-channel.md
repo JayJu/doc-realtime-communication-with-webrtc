@@ -120,6 +120,68 @@
 ## 코드 가져오기
 **작업** 디렉토리의 내용을 **step-06** 의 내용으로 바꾼다. **작업** 중인 **index.html** 파일은 다음과 같다.
 
+``` javascript
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Realtime communication with WebRTC</title>
+
+  <link rel="stylesheet" href="/css/main.css" />
+
+</head>
+
+<body>
+
+  <h1>Realtime communication with WebRTC</h1>
+
+  <h2>
+    <span>Room URL: </span><span id="url">...</span>
+  </h2>
+
+  <div id="videoCanvas">
+    <video id="camera" autoplay></video>
+    <canvas id="photo"></canvas>
+  </div>
+
+  <div id="buttons">
+    <button id="snap">Snap</button><span> then </span><button id="send">Send</button>
+    <span> or </span>
+    <button id="snapAndSend">Snap &amp; Send</button>
+  </div>
+
+  <div id="incoming">
+    <h2>Incoming photos</h2>
+    <div id="trail"></div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/lib/adapter.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>
+```
+
+노드 서버가 실행되고 있지 않으면 작업 디렉토리에서 다음 명령을 실행한다.
+
+``` shellscript
+node index.js
+```
+
+(Socket.IO를 구현한 **index.js** 버전을 사용하고 있는지 확인하고 변경 한 경우 노드 서버를 다시 시작한다)
+
+필요한 경우 **허용(Allow)** 버튼을 클릭하면 앱이 웹캠을 사용할 수 있다.
+
+이 어플리케이션은 임의로 회의실 ID를 만들고 해당 ID를 URL에 추가한다. 새 브라우저 탭 또는 창에서 이 URL에 접속한다.
+
+**스냅 및 보내기(Snap & Send)** 버튼을 클릭 한 다음 페이지 하단의 다른 탭에서 수신 영역을 확인한다. 앱이 탭간에 사진을 전송한다.
+
+다음과 같은 내용을 확인한다:
+
+
 ## 보너스 점수
 1. a
 
