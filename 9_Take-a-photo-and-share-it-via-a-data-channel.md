@@ -45,7 +45,81 @@
   }
   ```
 
-4. 사용자가 보내기 버튼을 클릭하면 이미지를 바이트로 변환하고 데이터 채널을 통해 전송합니다.
+4. 사용자가 보내기 버튼을 클릭하면 이미지를 바이트로 변환하고 데이터 채널을 통해 전송한다.
+
+  ``` javascript
+  function sendPhoto() {
+    // Split data channel message in chunks of this byte length.
+    var CHUNK_LEN = 64000;
+    var img = photoContext.getImageData(0, 0, photoContextW, photoContextH),
+      len = img.data.byteLength,
+      n = len / CHUNK_LEN | 0;
+
+    console.log('Sending a total of ' + len + ' byte(s)');
+    dataChannel.send(len);
+
+    // split the photo and send in chunks of about 64KB
+    for (var i = 0; i < n; i++) {
+      var start = i * CHUNK_LEN,
+        end = (i + 1) * CHUNK_LEN;
+      console.log(start + ' - ' + (end - 1));
+      dataChannel.send(img.data.subarray(start, end));
+    }
+
+    // send the reminder, if any
+    if (len % CHUNK_LEN) {
+      console.log('last ' + len % CHUNK_LEN + ' byte(s)');
+      dataChannel.send(img.data.subarray(n * CHUNK_LEN));
+    }
+  }
+  ```
+
+5. 수신 측은 데이터 채널 메시지 바이트를 이미지로 다시 변환하고 이미지를 사용자에게 표시한다.
+
+  ``` javascript
+  function receiveDataChromeFactory() {
+    var buf, count;
+
+    return function onmessage(event) {
+      if (typeof event.data === 'string') {
+        buf = window.buf = new Uint8ClampedArray(parseInt(event.data));
+        count = 0;
+        console.log('Expecting a total of ' + buf.byteLength + ' bytes');
+        return;
+      }
+
+      var data = new Uint8ClampedArray(event.data);
+      buf.set(data, count);
+
+      count += data.byteLength;
+      console.log('count: ' + count);
+
+      if (count === buf.byteLength) {
+        // we're done: all data chunks have been received
+        console.log('Done. Rendering photo.');
+        renderPhoto(buf);
+      }
+    };
+  }
+
+  function renderPhoto(data) {
+    var canvas = document.createElement('canvas');
+    canvas.width = photoContextW;
+    canvas.height = photoContextH;
+    canvas.classList.add('incomingPhoto');
+    // trail is the element holding the incoming images
+    trail.insertBefore(canvas, trail.firstChild);
+
+    var context = canvas.getContext('2d');
+    var img = context.createImageData(photoContextW, photoContextH);
+    img.data.set(data);
+    context.putImageData(img, 0, 0);
+  }
+  ```
+
+## 코드 가져오기
+**작업** 디렉토리의 내용을 **step-06** 의 내용으로 바꾼다. **작업** 중인 **index.html** 파일은 다음과 같다.
+
 ## 보너스 점수
 1. a
 
