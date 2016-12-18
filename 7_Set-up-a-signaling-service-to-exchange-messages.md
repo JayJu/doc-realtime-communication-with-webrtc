@@ -246,15 +246,27 @@ node index.js
 각 탭에서 콘솔을 확인한다. 위의 JavaScript에서 로깅을 확인해야 한다.
 
 ## 보너스 점수
-1. a
+1. 대안이 될 만한 메시징 메커니즘은 무엇일까? '순수한' WebSocket을 사용할 때 어떤 문제가 발생할 수 있는가?
+
+2. 이 응용 프로그램을 확장할(scaling) 경우 발생 할 수 있는 문제는 무엇인가? 수천 또는 수백만 개의 동시 방(room) 요청을 테스트 할 수 있는 방법을 개발할 수 있을까?
+
+3. 이 앱은 JavaScript 프롬프트로 회의실명을 입력받는다. URL에서 회의실 이름을 가져 오는 방법을 찾아보십시오. 예를 들어 _localhost:8080/foo_ 는 ```foo```라는 회의실 이름을 부여한다.
 
 ## 지금까지 배운 것들
 
 이번 장에서는
 
-* a
+* npm을 사용하여 package.json에 지정된대로 프로젝트 종속성을 설치하고
+* 서버쪽 정적 파일들로 노드 서버를 실행하고
+* socket.io를 사용하여 노드에 메시징 서비스를 설정하고
+* 이를 사용하여 '회의실'을 만들고 메시지를 교환하는 방법
 
-에 대해 배웠다. 전체 소스는 **step-03** 디렉토리에 있다.
+에 대해 배웠다. 전체 소스는 **step-04** 디렉토리에 있다.
 
 ## 좀 더 찾아보기
-* 
+* [Socket.io 채팅 예제](https://github.com/rauchg/chat-example)
+* [실제 세계의 WebRTC: STUN, TURN 및 시그널링](https://www.html5rocks.com/en/tutorials/webrtc/infrastructure/)
+* [WebRTC에서 '시그널링' 이라는 용어](https://www.webrtc-experiment.com/docs/WebRTC-Signaling-Concepts.html)
+
+## 다음단계
+시그널링을 사용하여 두 명의 사용자가 피어연결을 수행하는 방법에 대해 알아보자.
