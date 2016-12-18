@@ -162,7 +162,88 @@ npm install
 
 경고가 표시 될 수 있지만 빨간색 에러가 나타난다면 도움을 요청하자!
 
-작업 디렉토리의 최상위 레벨 (js 디렉토리 아님)에 index.js라는 새 파일을 작성하고 다음 코드를 추가하십시오.
+**작업** 디렉토리의 최상위 레벨 (**js** 디렉토리 아님)에 **index.js** 라는 새 파일을 작성하고 다음 코드를 추가한다.
+
+``` javascript
+'use strict';
+
+var os = require('os');
+var nodeStatic = require('node-static');
+var http = require('http');
+var socketIO = require('socket.io');
+
+var fileServer = new(nodeStatic.Server)();
+var app = http.createServer(function(req, res) {
+  fileServer.serve(req, res);
+}).listen(8080);
+
+var io = socketIO.listen(app);
+io.sockets.on('connection', function(socket) {
+
+  // convenience function to log server messages on the client
+  function log() {
+    var array = ['Message from server:'];
+    array.push.apply(array, arguments);
+    socket.emit('log', array);
+  }
+
+  socket.on('message', function(message) {
+    log('Client said: ', message);
+    // for a real app, would be room-only (not broadcast)
+    socket.broadcast.emit('message', message);
+  });
+
+  socket.on('create or join', function(room) {
+    log('Received request to create or join room ' + room);
+
+    var numClients = io.sockets.sockets.length;
+    log('Room ' + room + ' now has ' + numClients + ' client(s)');
+
+    if (numClients === 1) {
+      socket.join(room);
+      log('Client ID ' + socket.id + ' created room ' + room);
+      socket.emit('created', room, socket.id);
+
+    } else if (numClients === 2) {
+      log('Client ID ' + socket.id + ' joined room ' + room);
+      io.sockets.in(room).emit('join', room);
+      socket.join(room);
+      socket.emit('joined', room, socket.id);
+      io.sockets.in(room).emit('ready');
+    } else { // max two clients
+      socket.emit('full', room);
+    }
+  });
+
+  socket.on('ipaddr', function() {
+    var ifaces = os.networkInterfaces();
+    for (var dev in ifaces) {
+      ifaces[dev].forEach(function(details) {
+        if (details.family === 'IPv4' && details.address !== '127.0.0.1') {
+          socket.emit('ipaddr', details.address);
+        }
+      });
+    }
+  });
+
+});
+```
+
+명령 행 터미널에서 **작업** 디렉토리에서 다음 명령을 실행한다.
+
+``` shellscript
+node index.js
+```
+
+브라우저에서 **localhost:8080** 에 접속한다.
+
+이 URL에 접속 할 때마다 회의실 이름을 입력하라는 메시지가 표시된다. 같은 방에 가려면 'foo'와 같은 방 이름을 매번 선택해야 한다.
+
+새 탭 페이지를 열고 **localhost:8080** 에 다시 접속한다. 같은 방 이름을 선택한다.
+
+세 번째 탭이나 창에서 **localhost:8080** 에 접속한다. 같은 방 이름을 다시 선택한다.
+
+각 탭에서 콘솔을 확인한다. 위의 JavaScript에서 로깅을 확인해야 한다.
 
 ## 보너스 점수
 1. a
